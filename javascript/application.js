@@ -21,11 +21,14 @@ $(function(){
     }
     else {
       var nextMessage    = $streamData[$streamIndex];
-      var nextMessageUrl = "http://lmgtfy.com/?q=" + gentlyEncode(nextMessage) + "&fwd";
+      var nextMessageUrl = "http://lmgtfy.com/?q=" + gentlyEncode(nextMessage);
       var newNode        = $("<li style=\"display:none\"><a></a></li>");
       newNode.find("a")
         .attr("href", nextMessageUrl)
-        .text(nextMessage);
+        .text(nextMessage)
+        .click(function(){
+          $(this).attr("href", "http://vanillaresults.com/?q=" + gentlyEncode(nextMessage));
+        });
       $streamNode.append(newNode);
       newNode.slideDown();
       setStreamIndex($streamIndex + 1);
