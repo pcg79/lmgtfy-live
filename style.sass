@@ -23,28 +23,42 @@ body
     :whitespace nowrap
     a
       :display block
-      :padding 0 8px
+      :padding 0 0.5em
       :text-decoration none
       :color #333
     a:hover
       :background-color #F9FFD2
   li.first
-    :padding 0 8px
+    :padding 0 0.5em
     :font-style italic
     :color #999
+
+#sidebar
+  :width 200px
+  :position absolute
+  :height 100%
+  :top 0
+  :left 0
+  :background-color #333
 
 #about
   :position absolute
   :width 150px
-  :left 15px
+  :left 16px
   :bottom 8px
-  :color #666
+  :color #ccc
   :font-size .875em
   :line-height 1.714
   :letter-spacing -1px
-  :opacity 0.5
-  &:hover
-    :opacity 1
+  h1
+    :height 57px
+    :text-indent -9999px
+    :overflow hidden
+    :background transparent url("images/logo.png") no-repeat top left
+  p.genesis
+    :opacity 0.66
+    &:hover
+      :opacity 1
   a
     :padding-top 3px
     :color #2259d0
@@ -62,6 +76,11 @@ body
     &:hover
       :color #fff
       :background-color #199f20
+  #copyright
+    :font-size .75em
+    :line-height 2
+    :color #666
+
 
 #sponsor
   :display none
