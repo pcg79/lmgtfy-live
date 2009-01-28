@@ -29,19 +29,19 @@ $(function(){
         .click(function(){
           var $this = $(this);
           $this.attr("href", "http://vanillaresults.com/?q=" + gentlyEncode(nextMessage));
-          setTimeout(function(){ $this.attr("href", nextMessageUrl) }, 10);
+          setTimeout(function(){ $this.attr("href", nextMessageUrl); }, 10);
         });
       $streamNode.append(newNode);
       newNode.slideDown();
       setStreamIndex($streamIndex + 1);
       popOffTheTop();
-      setTimeout(function(){ rollStream() }, rand(3000))
+      setTimeout(function(){ rollStream(); }, rand(3000));
     }
   }
 
   function popOffTheTop() {
     if($streamNode.children().length > 100)
-      popOffTheTop = function() { $streamNode.find("li:first").remove(); }
+      popOffTheTop = function() { $streamNode.find("li:first").remove(); };
   }
 
   function setStreamIndex(x) {
@@ -52,4 +52,4 @@ $(function(){
   function getStreamIndex() {
     return $streamIndex || parseInt($.cookie("streamIndex")) || 0;
   }
-})
+});
