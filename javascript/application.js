@@ -1,51 +1,50 @@
 $(function(){
-  var $stream_data  = [];
-  var $stream_index = getStreamIndex();
-  var $stream_node  = $("#stream");
+  var $streamData  = [];
+  var $streamIndex = getStreamIndex();
+  var $streamNode  = $("#stream");
 
   updateData();
 
   function updateData() {
-    $.log("updating data");
     $.getJSON("/recent.json", null, beginStreamRoll);
   }
 
   function beginStreamRoll(data) {
-    $stream_data = data;
-    $.log("got data: %s", $stream_data[0]);
-    $.log("begin stream roll");
+    $streamData = data;
     rollStream();
   }
 
   function rollStream() {
-    if($stream_index > $stream_data.length - 1) {
-      $.log("rolling: %i > %i", $stream_index, $stream_data.length - 1);
+    if($streamIndex > $streamData.length - 1) {
       setStreamIndex(0);
       updateData();
     }
     else {
-      var new_node     = $("<li style=\"display:none\">foo</li>");
-      var next_message = $stream_data[$stream_index];
-      new_node.text(next_message);
-      $stream_node.append(new_node);
-      $stream_node.find("li:last").slideDown();
-      setStreamIndex($stream_index + 1);
+      var nextMessage    = $streamData[$streamIndex];
+      var nextMessageUrl = "http://lmgtfy.com/?q=" + gentlyEncode(nextMessage) + "&fwd";
+      var newNode        = $("<li style=\"display:none\"><a></a></li>");
+      newNode.find("a")
+        .attr("href", nextMessageUrl)
+        .text(nextMessage);
+      $streamNode.append(newNode);
+      newNode.slideDown();
+      setStreamIndex($streamIndex + 1);
       popOffTheTop();
       setTimeout(function(){ rollStream() }, rand(3000))
     }
   }
 
   function popOffTheTop() {
-    if($stream_node.children().length > 100)
-      popOffTheTop = function() { $stream_node.find("li:first").remove(); }
+    if($streamNode.children().length > 100)
+      popOffTheTop = function() { $streamNode.find("li:first").remove(); }
   }
 
   function setStreamIndex(x) {
     $.cookie("streamIndex", x);
-    $stream_index = x;
+    $streamIndex = x;
   }
 
   function getStreamIndex() {
-    return $stream_index || parseInt($.cookie("streamIndex")) || 0;
+    return $streamIndex || parseInt($.cookie("streamIndex")) || 0;
   }
 })

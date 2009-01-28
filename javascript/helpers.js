@@ -29,3 +29,9 @@ $.log = $.fn.log = function (msg) {
   }
   return this;
 };
+
+function gentlyEncode(string) {
+  return ( encodeURIComponent
+           ? encodeURIComponent(string).replace(/%20(\D)?/g, "+$1").replace(/'/g, escape("'"))
+           : escape(string).replace(/\+/g, "%2B").replace(/%20/g, "+") );
+}
