@@ -27,7 +27,9 @@ $(function(){
         .attr("href", nextMessageUrl)
         .text(nextMessage)
         .click(function(){
-          $(this).attr("href", "http://vanillaresults.com/?q=" + gentlyEncode(nextMessage));
+          var $this = $(this);
+          $this.attr("href", "http://vanillaresults.com/?q=" + gentlyEncode(nextMessage));
+          setTimeout(function(){ $this.attr("href", nextMessageUrl) }, 10);
         });
       $streamNode.append(newNode);
       newNode.slideDown();
