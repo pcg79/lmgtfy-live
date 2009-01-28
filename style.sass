@@ -5,13 +5,14 @@ body
   :color #333
   :height 100%
   :line-height 1.5
-  :font-family Georgia, serif
+  :font-family Helvetica, Arial, sans-serif
 
 #stream
   :position absolute
   :bottom 0
   :left 0
   :margin-left 200px
+  :font-family Georgia, serif
   li
     :line-height 48px
     :height 48px
@@ -28,27 +29,35 @@ body
     :font-style italic
     :color #999
 
-#footer
-  :margin-top 40px
-  :color #999
-  :border-top solid 1px #ddd
-  :padding-top 0.5em
-  :text-align center
+#about
+  :position absolute
+  :width 150px
+  :left 15px
+  :bottom 8px
+  :color #666
+  :font-size .875em
+  :line-height 1.714
+  :letter-spacing -1px
+  :opacity 0.5
+  &:hover
+    :opacity 1
   a
-    :color #999
+    :padding-top 3px
+    :color #2259d0
     :text-decoration none
-    :padding 0 1em
-  a:hover
-    :text-decoration underline
-
-#copyright
-  :display none
-  :margin-top 40px
-  :padding 0.25em
-  :text-align center
-  :font-size 0.75em
-  :color #bbb
-  :background-color #fff
+    &:hover
+      :color #fff
+      :background-color #00c
+  a.secondary
+    :color #dc412b
+    &:hover
+      :color #fff
+      :background-color #dc412b
+  a.ternary
+    :color #199f20
+    &:hover
+      :color #fff
+      :background-color #199f20
 
 #sponsor
   :display none
