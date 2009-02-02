@@ -4,6 +4,7 @@ $(function(){
   var streamNode  = $("#stream");
 
   updateData();
+  runBanners();
 
   function updateData() {
     $.getJSON("/recent.json", null, beginStreamRoll);
@@ -51,5 +52,14 @@ $(function(){
 
   function getStreamIndex() {
     return streamIndex || parseInt($.cookie("streamIndex")) || 0;
+  }
+
+  function runBanners() {
+    $("#sponsor").fadeOut(1000, function() {
+      $(this).sponsor("/s/program.json", function() {
+        this.fadeIn(1000);
+      });
+    });
+    setTimeout(runBanners, 30000);
   }
 });
