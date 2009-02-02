@@ -9,6 +9,7 @@ $.fn.sponsor = function(programFile, callback) {
     anchor.find("p").html(sponsor.message);
     if (pageTracker) {
       pageTracker._trackPageview("/sponsor/" + id);
+      anchor.unbind("click");
       anchor.click(function() { pageTracker._trackPageview("/outgoing/sponsor/" + id); });
     }
     if (callback) callback.call(self);
