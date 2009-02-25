@@ -1,4 +1,4 @@
-excludes = %w(.git* .DS* R* *.haml recent.json)
+excludes = %w(.git* .DS* R* *.haml recent.json script/test)
 exclude_options = excludes.map { |e| "--exclude=#{e}" }.join(" ")
 SETTINGS = {
   :rsync_server  => "lmgtfy.com:/u/apps/lmgtfy-live",
