@@ -55,11 +55,6 @@ $(function(){
   }
 
   function runBanners() {
-    $("#sponsor").fadeOut(1000, function() {
-      $(this).sponsor("/s/program.json", function() {
-        this.fadeIn(1000);
-      });
-    });
-    setTimeout(runBanners, 30000);
+    $("#sponsor").fadeIn(1000);
   }
 });
