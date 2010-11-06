@@ -1,3 +1,6 @@
+.bundle
+.sass-cache
 bundle.js
 *.html
 .DS_Store
+vendor/ruby
