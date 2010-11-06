@@ -55,6 +55,6 @@ $(function(){
   }
 
   function runBanners() {
-    $("#sponsor").fadeIn(1000);
+    $("#sponsor1,#sponsor2").fadeIn(1000);
   }
 });
