@@ -2,7 +2,7 @@ require "rubygems"
 require "bundler/setup"
 require "directory_watcher"
 
-excludes = %w(.* R* G* *.haml *.sass recent.json artwork javascript script/test vendor)
+excludes = %w(.* R* G* *.haml *.sass recent.json artwork javascript script/test vendor public)
 exclude_options = excludes.map { |e| "--exclude=#{e}" }.join(" ")
 SETTINGS = {
   :rsync_server  => "lmgtfy.com:/u/apps/lmgtfy-live",
@@ -17,7 +17,7 @@ task :publish => :build do
 end
 
 task :test do
-  watch_and_open("http://live.lmgtfy.local/")
+  watch_and_open("http://live.lmgtfy.dev/")
 end
 
 task :build do
